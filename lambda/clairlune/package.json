@@ -1,0 +1,17 @@
+{
+  "name": "clairlune",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.6.0",
+    "node-uuid": "^1.4.7",
+    "archiver": "^1.1.0"
+  },
+  "engines": {
+    "node": "4.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mozamimy (Moza USANE) <mozamimy@quellencode.org>"
+}
