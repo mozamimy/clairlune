@@ -60,11 +60,15 @@ function handler(event, context, callback) {
         Body: fileStream,
       };
 
-      s3.putObject(s3Params, (err, data) => {
+      s3.putObject(s3Params, (err, _) => {
         if (err) {
           context.fail(err);
         } else {
-          context.succeed('uploaded');
+          context.succeed({
+            status: 'success',
+            bucket: data['bucket'],
+            key: data['key'],
+          });
         }
       });
     });
