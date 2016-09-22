@@ -13,9 +13,13 @@ const ZIP_FILE_PATH = `/tmp/${uuid.v4()}`;
 
 function handler(event, context, callback) {
   new Promise((resolve, reject) => {
-    fs.mkdirSync(TMP_DIR_PATH);
+    if (!fs.existsSync(TMP_DIR_PATH)) {
+      fs.mkdirSync(TMP_DIR_PATH);
+    }
+    if (!fs.existsSync(DUMMY_HOME_PATH)) {
+      fs.mkdirSync(DUMMY_HOME_PATH);
+    }
     fs.writeFileSync(PACKAGE_JSON_PATH, JSON.stringify(event, null, 2));
-    fs.mkdirSync(DUMMY_HOME_PATH);
 
     exec(`HOME=${DUMMY_HOME_PATH} npm install`, { cwd: TMP_DIR_PATH }, (err, stdout, stderr) => {
       if (err) {
