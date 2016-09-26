@@ -26,6 +26,35 @@ TODO: Create installer
 
 ## Usage
 
+### Adapt your package.json to clairlune
+
+A section `clairlune` is required like following sample code when use clairlune.
+
+```json
+{
+  "name": "my-awesome-function",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.6.0",
+    "node-uuid": "^1.4.7",
+    "@google-cloud/storage": "^0.1.1"
+  },
+  "engines": {
+    "node": "4.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mozamimy (Moza USANE) <mozamimy@quellencode.org>",
+  "clairlune": {
+    "bucket": "my-awesome-bucket",
+    "key": "node_modules.zip"
+  }
+}
+```
+
 ### In Ruby code
 
 ```ruby
@@ -33,7 +62,7 @@ require 'clairlune'
 
 builder = Clairlune::Builder.new(
   bucket: 'my-awesome-bucket',
-  key: 'npm_modules.zip',
+  key: 'node_modules.zip',
   package_json: '/path/to/package.json',
   function_name: 'clairlune',
   dest: '/path/to/node_modules.zip',
