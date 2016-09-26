@@ -58,7 +58,7 @@ A section `clairlune` is required like following sample code when use clairlune.
 ### In Ruby code
 
 ```ruby
-require 'clairlune'
+require 'clairlune/builder'
 
 builder = Clairlune::Builder.new(
   bucket: 'my-awesome-bucket',
@@ -72,14 +72,32 @@ builder.performe
 
 ### As CLI tool
 
-TODO: Not yet implemented CLI interface.
+Use clairlune command with AWS credential.
+
+```
+$ clairlune --help
+Usage: clairlune [options]
+        --bucket BUCKET
+        --key KEY
+        --package-json /path/to/package.json
+        --function-name NAME
+        --dest /path/to/node_modules.zip
+        --loglevel (fatal|error|warn|info|debug)
+        --version
+```
+
+For example,
+
+```
+$ clairlune --bucket my-awesome-bucket --key clairlune/node_modules.zip --package-json ~/lambda/my-awesome-function/package.json --function-name clairlune --dest node_modules.zip
+```
 
 ## Progress report
 
 - [x] Lambda function to build npm modules
 - [x] Core toolkit with Ruby
 - [ ] Installer
-- [ ] CLI interface
+- [x] CLI interface
 - [ ] Documentation
 
 ## License
